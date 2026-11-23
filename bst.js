@@ -12,9 +12,15 @@ function buildTree(arr) {
     }
     const sortedArray = arr.sort((a, b) => a - b)
     const middleValue = Math.floor(sortedArray.length / 2)
+    const hidariGroup = sortedArray.slice(0, middleValue)
+    const migiGroup = sortedArray.slice(middleValue + 1)
     const root = sortedArray[middleValue]
 
-    return Node(root)
+    const node = Node(root)
+    node.hidari = buildTree(hidariGroup)
+    node.migi = buildTree(migiGroup)
+
+    return node
 }
 
 export function Tree(arr) {
