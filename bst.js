@@ -40,6 +40,18 @@ export function Tree(arr) {
             if (num === this.root.data) {
                 return true;
             }
+
+            if (num < this.root.data) {
+                if (num === this.root.hidari.data) {
+                    return true;
+                }
+            }
+
+            if (num > this.root.data) {
+                if (num === this.root.migi.data) {
+                    return true;
+                }
+            }
         }
     }
 }
