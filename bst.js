@@ -1,3 +1,13 @@
+const prettyPrint = (node, prefix = '', isLeft = true) => {
+    if (node === null || node === undefined) {
+      return;
+    }
+  
+    prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
+    prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+}
+  
 export function Node(data) {
     return {
         data: data,
@@ -25,6 +35,11 @@ function buildTree(arr) {
 
 export function Tree(arr) {
     return {
-        root: buildTree(arr)
+        root: buildTree(arr),
+        includes: function includes (num) {
+            if (num === this.root.data) {
+                return true;
+            }
+        }
     }
 }
